@@ -32,6 +32,10 @@ public class AdventureGame {
             System.out.println("Here are three potions to assist you~");
             potions = 3;
             fight();
+
+            System.out.println("Whew " + userName + ".  That was a close one.");  //new code
+            chooseDoor(); //new code
+
             System.out.println("Would you like to start a new adventure? [Yes/No]");
         } else {
             System.out.println("I see, good travels to you then...");
@@ -75,5 +79,45 @@ public class AdventureGame {
         }
 
 
+    }
+
+    //new code below
+    public static void chooseDoor() {
+        System.out.println("You come upon 2 doors. \nWhat will you do??? Choose [left / right]");
+        String response = scanner.nextLine();
+        if (response.equalsIgnoreCase("left")) {
+            System.out.println("OH NO!  You have walked into dragon's lair.  However you notice that the dragon is still sleeping.");
+            System.out.println("You slowly start to back out, but the cutest baby dragon has blocked your doorway and wants to play.");
+            System.out.println("The excited baby dragon accidentally sneezes on  you and burns you to a crisp.  Your journey has ended.");
+        } else if (response.equalsIgnoreCase("right")) {
+            System.out.println("You have walked into the flower-atorium room.\n  It is filled with smells of the most beautiful flowers from around the world.");
+            System.out.println("In the middle of the room, there are 3 flowers, each of which say, \"Smell Me\"");
+            smellFlower();
+
+        } else {
+            System.out.println("Sorry, that choice is not understood.");
+            chooseDoor();
+        }
+    }
+
+    public static void smellFlower() {
+
+        System.out.println("The three flowers are red, blue and yellow.  Of which of these do you wish to partake? \nBe aware that these may be the most beautiful aromas that you have ever smelled before");
+        System.out.println("What will you do?? Choose [red / blue / yellow]");
+
+        String flowerChoice = scanner.nextLine();
+
+        if (flowerChoice.equalsIgnoreCase("red")) {
+            System.out.printf("Ugh!!! You chose %s!  You should have known better and should have listened to your mother when she warned you to stay away from this type of flower.%n", flowerChoice);
+            System.out.printf("The %s flower begins to constrict your airways.  First in your nostrils, then into the back of your throat and finally you feel the squeezing pressure that collapses your trachea.%n", flowerChoice);
+            System.out.printf("You fall on the floor and slowly fade away with your last gaze being a single petal from that %s flower.  YOU'RE DEAD. %n", flowerChoice);
+        } else if (flowerChoice.equalsIgnoreCase("blue")) {
+            System.out.printf("Picking the %s flower was a good choice. " + userName + " You have added 1 point to your health.%n", flowerChoice);
+        } else if (flowerChoice.equalsIgnoreCase("yellow")) {
+            System.out.printf("Ah yes.  The %s flower was a GREAT choice " + userName + " You have doubled your health.%n", flowerChoice);
+        } else {
+            System.out.println("Sorry, that choice is not understood.");
+            smellFlower();
+        }
     }
 }
